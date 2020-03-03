@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace trainedWord2VecNet
+namespace wordVec
 {
-    class Program
+    public static class WordVecLoader
     {
-        static void Main(string[] args)
+        public static List<WordVec> load(string filePath)
         {
             var list = new List<WordVec>();
 
-            using (var sr = new StreamReader(args[0], Encoding.UTF8))
+            using (var sr = new StreamReader(filePath, Encoding.UTF8))
             {
                 string word = null;
                 List<float> vec = null;
@@ -40,21 +39,7 @@ namespace trainedWord2VecNet
                 list.Add(new WordVec(word, vec));
             }
 
-            Print(list);
-        }
-
-        static void Print(List<WordVec> list)
-        {
-            foreach (var e in list)
-                Print(e.Word, e.Vec);
-        }
-
-        static void Print(string word, List<float> vec)
-        {
-            Console.Write($"<{word}>, [{vec.Count}]");
-            foreach (var e in vec)
-                Console.Write($", {e}");
-            Console.WriteLine();
+            return list;
         }
     }
 }

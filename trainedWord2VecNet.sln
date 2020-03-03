@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trainedWord2VecNet", "trainedWord2VecNet\trainedWord2VecNet.csproj", "{49D751BE-798C-4466-96FB-F60527DA84F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libWordVecSample", "libWordVecSample\libWordVecSample.csproj", "{49D751BE-798C-4466-96FB-F60527DA84F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libWordVec", "libWordVec\libWordVec.csproj", "{A7CD4944-241F-4260-85BF-AF548D95EB4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{49D751BE-798C-4466-96FB-F60527DA84F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D751BE-798C-4466-96FB-F60527DA84F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D751BE-798C-4466-96FB-F60527DA84F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7CD4944-241F-4260-85BF-AF548D95EB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7CD4944-241F-4260-85BF-AF548D95EB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7CD4944-241F-4260-85BF-AF548D95EB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7CD4944-241F-4260-85BF-AF548D95EB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,1 +1,12 @@
 /trainedWord2VecNet/ja.tsv
+/.vs
+/trainedWord2VecNet/bin
+/trainedWord2VecNet/obj
+/trainedWord2VecNet
+/WpfApp1/obj
+/WpfApp1/bin
+/libWordVecSample/obj
+/libWordVecSample/bin
+/jv.tsv
+/libWordVec/bin
+/libWordVec/obj

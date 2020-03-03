@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace trainedWord2VecNet
+namespace wordVec
 {
     public class WordVec
     {
