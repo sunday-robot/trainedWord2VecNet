@@ -1,0 +1,7 @@
+proxy.pacの下のほうにあるIPアドレス、ポート番号を設定する。
+
+git config --global https.proxy 10.156.1.140:8080
+git config --global http.proxy 10.156.1.140:8080
+
+上記コマンドについては以下のページを参考にした。
+https://qiita.com/hidetzu/items/c2db95613ba594a2ef25
