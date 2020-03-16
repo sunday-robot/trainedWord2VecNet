@@ -6,9 +6,10 @@ namespace wordVec
 {
     public static class WordVecLoader
     {
-        public static List<WordVec> load(string filePath)
+        public static WordVec Load(string filePath)
         {
-            var list = new List<WordVec>();
+            int vectorSize;
+            var dictionary = new Dictionary<string, Vec>();
 
             using (var sr = new StreamReader(filePath, Encoding.UTF8))
             {
@@ -22,7 +23,7 @@ namespace wordVec
                     if (f.Length != 1)
                     {
                         if (word != null)
-                            list.Add(new WordVec(word, vec));
+                            dictionary[word] = new Vec(vec.ToArray());
                         word = f[1];
                         vec = new List<float>();
                         elements = f[2].Substring(1);  // 開始行
@@ -36,10 +37,11 @@ namespace wordVec
                         if (e.Length != 0)
                             vec.Add(float.Parse(e));
                 }
-                list.Add(new WordVec(word, vec));
+                vectorSize = vec.Count;
+                dictionary[word] = new Vec(vec.ToArray());
             }
 
-            return list;
+            return new WordVec(vectorSize,  dictionary);
         }
     }
 }

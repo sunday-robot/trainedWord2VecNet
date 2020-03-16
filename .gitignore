@@ -10,3 +10,5 @@
 /jv.tsv
 /libWordVec/bin
 /libWordVec/obj
+/sandbox/obj
+/sandbox/bin

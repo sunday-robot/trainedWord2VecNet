@@ -1,16 +1,59 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace wordVec
 {
     public class WordVec
     {
-        public string Word { get; private set; }
-        public List<float> Vec { get; private set; }
+        int vectorSize;
+        Dictionary<string, Vec> dictionary;
 
-        public WordVec(string word, List<float> vec)
+        public WordVec(int vectorSize, Dictionary<string, Vec> dictionary)
         {
-            Word = word;
-            Vec = vec;
+            this.vectorSize = vectorSize;
+            this.dictionary = dictionary;
+        }
+
+        public Vec Vec(string word) => dictionary[word];
+
+        public void Print()
+        {
+            foreach (var e in dictionary)
+            {
+                Console.Write($"<{e.Key}>, ");
+                e.Value.Print();
+            }
+        }
+
+        static void Print(string word, float[] vec)
+        {
+            Console.Write($"<{word}>, [{vec.Length}]");
+            foreach (var e in vec)
+                Console.Write($", {e}");
+            Console.WriteLine();
+        }
+
+        public Vec Evaluate(string expression)
+        {
+            var result = new Vec(vectorSize);
+            var operationIsPlus = true;
+            var tokens = expression.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var token in tokens)
+            {
+                if (token == "+")
+                    operationIsPlus = true;
+                else if (token == "-")
+                    operationIsPlus = false;
+                else
+                {
+                    var v = dictionary[token];
+                    if (operationIsPlus)
+                        result += v;
+                    else
+                        result -= v;
+                }
+            }
+            return result;
         }
     }
 }

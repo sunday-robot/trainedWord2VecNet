@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libWordVec", "libWordVec\li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sandbox", "sandbox\sandbox.csproj", "{D58C6249-233E-4082-BC17-9F67A759B20D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6F275DD-3708-4B0D-B695-4BAB7146CCC8}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{D58C6249-233E-4082-BC17-9F67A759B20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D58C6249-233E-4082-BC17-9F67A759B20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D58C6249-233E-4082-BC17-9F67A759B20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D58C6249-233E-4082-BC17-9F67A759B20D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
