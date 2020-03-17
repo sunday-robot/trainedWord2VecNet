@@ -20,12 +20,18 @@ namespace wordVec
             this.values = new float[vectorSize];
         }
 
-        public static Vec operator +(Vec a, Vec b)
+        Vec Add(Vec a)
         {
-            var r = new Vec(a.values.Length);
-            for (int i = 0; i < a.values.Length; i++)
-                r.values[i] = a.values[i] + b.values[i];
-            return r;
+            for (int i = 0; i < values.Length; i++)
+                values[i] += a.values[i];
+            return this;
+        }
+
+        Vec Sub(Vec a)
+        {
+            for (int i = 0; i < values.Length; i++)
+                values[i] -= a.values[i];
+            return this;
         }
 
         public void Print()
@@ -34,6 +40,22 @@ namespace wordVec
             foreach (var e in values)
                 Console.Write($", {e}");
             Console.WriteLine();
+        }
+
+        public static Vec operator +(Vec a, Vec b)
+        {
+            var r = new Vec(a.values.Length);
+            for (int i = 0; i < a.values.Length; i++)
+                r.values[i] = a.values[i] + b.values[i];
+            return r;
+        }
+
+        public static Vec operator -(Vec a, Vec b)
+        {
+            var r = new Vec(a.values.Length);
+            for (int i = 0; i < a.values.Length; i++)
+                r.values[i] = a.values[i] - b.values[i];
+            return r;
         }
     }
 }

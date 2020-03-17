@@ -12,6 +12,7 @@ namespace libWordVecSample
             //wv.Print();
             var s = " こんにちは   + 世界 ";
             var result = wv.Evaluate(s);
+            result.Print();
         }
     }
 }
