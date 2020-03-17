@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace wordVec
 {
+    [Serializable]
     public class WordVec
     {
         int vectorSize;
