@@ -17,7 +17,7 @@ namespace wordVec
             this.values = new float[vectorSize];
         }
 
-        double Length2()
+        public double Length2()
         {
             var r = 0.0;
             foreach (var e in values)

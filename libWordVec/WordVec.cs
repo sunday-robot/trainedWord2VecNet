@@ -42,12 +42,23 @@ namespace wordVec
             return result;
         }
 
+        /// <summary>
+        /// 指定されたベクトル値に近いものを返す。
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public List<Tuple<string,  Vec>> GetNeighbors(Vec v, int count)
         {
-            double maxLength2 = 0;
-            foreach (var e in dictionary.Keys)
+            int index = 0;
+            var maxDistance2 = double.MaxValue;    // 
+            foreach (var e in dictionary)
             {
+                var d2 = (v - e.Value).Length2();
+                if (d2 < maxDistance2)
+                {
 
+                }
             }
         }
 
