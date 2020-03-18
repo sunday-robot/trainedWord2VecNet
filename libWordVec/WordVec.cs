@@ -42,6 +42,22 @@ namespace wordVec
             return result;
         }
 
+        static void GetMinValueIndex(List<double> list, out int minValueIndex, out double minValue)
+        {
+            var r = 0;
+            var v = double.MaxValue;
+            for (int i = 1; i < list.Count; i++)
+            {
+                if (list[i] < v)
+                {
+                    v = list[i];
+                    r = i;
+                }
+            }
+            minValueIndex = r;
+            minValue = v;
+        }
+
         /// <summary>
         /// 指定されたベクトル値に近いものを返す。
         /// </summary>
@@ -50,16 +66,31 @@ namespace wordVec
         /// <returns></returns>
         public List<Tuple<string,  Vec>> GetNeighbors(Vec v, int count)
         {
-            int index = 0;
-            var maxDistance2 = double.MaxValue;    // 
+            var wvList = new List<Tuple<string, Vec>>();
+            var d2List = new List<double>();
+
+            var minD2 =  0.0;
+            var minD2Index = 0;
             foreach (var e in dictionary)
             {
                 var d2 = (v - e.Value).Length2();
-                if (d2 < maxDistance2)
+                if (wvList.Count < count)
                 {
-
+                    wvList.Add(new Tuple<string, Vec>(e.Key, e.Value));
+                    d2List.Add(d2);
+                    if (wvList.Count == count)
+                        GetMinValueIndex(d2List, out minD2Index, out minD2);
+                }
+                else
+                {
+                    if (d2 < minD2)
+                    {
+                        wvList[minD2Index] = new Tuple<string, Vec>(e.Key, e.Value);
+                        GetMinValueIndex(d2List, out minD2Index, out minD2);
+                    }
                 }
             }
+            return wvList;
         }
 
         public void Print()
