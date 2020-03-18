@@ -17,7 +17,7 @@ namespace libWordVecSample
 
         static void SerializeSample(string tsvFilePath)
         {
-            var binFilePath = "ja.bin";
+            var binFilePath = "../../../ja.bin";
             var bf = new BinaryFormatter();
 
             var wv = WordVecLoader.Load(tsvFilePath);
