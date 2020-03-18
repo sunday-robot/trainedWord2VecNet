@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace wordVec
 {
+    [Serializable]
     public class WordVec
     {
         int vectorSize;
@@ -39,6 +40,15 @@ namespace wordVec
                 }
             }
             return result;
+        }
+
+        public List<Tuple<string,  Vec>> GetNeighbors(Vec v, int count)
+        {
+            double maxLength2 = 0;
+            foreach (var e in dictionary.Keys)
+            {
+
+            }
         }
 
         public void Print()

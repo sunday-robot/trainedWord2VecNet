@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace wordVec
 {
+    [Serializable]
     public class Vec
     {
         float[] values;
@@ -18,6 +15,16 @@ namespace wordVec
         public Vec(int vectorSize)
         {
             this.values = new float[vectorSize];
+        }
+
+        double Length2()
+        {
+            var r = 0.0;
+            foreach (var e in values)
+            {
+                r += e * e;
+            }
+            return r;
         }
 
         Vec Add(Vec a)
