@@ -10,9 +10,21 @@ namespace libWordVecSample
     {
         static void Main(string[] args)
         {
-            //EvaluateSample(args[0]);
+            var binFilePath = "../../../ja.bin";
+            ListWords(binFilePath);
+            //EvaluateSample(binFilePath);
             //SerializeSample(args[0]);
-            DeserializaSample();
+            //DeserializaSample();
+        }
+
+        static void ListWords(string filePath)
+        {
+            var wv = WordVecLoader.Load(filePath);
+            var e = wv.GetWords();
+            for (var i = 0; i < e.Length; i++)
+            {
+                Console.WriteLine($"{i}\t[{e[i]}]");
+            }
         }
 
         static void SerializeSample(string tsvFilePath)
@@ -20,7 +32,7 @@ namespace libWordVecSample
             var binFilePath = "../../../ja.bin";
             var bf = new BinaryFormatter();
 
-            var wv = WordVecLoader.Load(tsvFilePath);
+            var wv = WordVecLoader.LoadTsv(tsvFilePath);
             WordVec wv2;
 
             {
@@ -53,11 +65,20 @@ namespace libWordVecSample
         static void EvaluateSample(string filePath)
         {
             var wv = WordVecLoader.Load(filePath);
-            //wv.Print();
-            var s = " こんにちは   + 世界 ";
+            string s;
+            s = " こんにちは   + 世界 ";
+            s = "日本";
+            s = "おはよう - 朝 - 夜";
+            s = "男 - 女";
             var result = wv.Evaluate(s);
-            result.Print();
+//            result.Print();
+            var neighbors = wv.GetNeighbors(result, 10);
+            foreach (var e in neighbors)
+            {
+                var word = e.Item1;
+                var distance = e.Item3;
+                Console.WriteLine($"{word} : {distance}");
+            }
         }
-
     }
 }

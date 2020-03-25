@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace wordVec
 {
     public static class WordVecLoader
     {
-        public static WordVec Load(string filePath)
+        public static WordVec LoadTsv(string filePath)
         {
             int vectorSize;
             var dictionary = new Dictionary<string, Vec>();
@@ -41,7 +42,24 @@ namespace wordVec
                 dictionary[word] = new Vec(vec.ToArray());
             }
 
-            return new WordVec(vectorSize,  dictionary);
+            return new WordVec(vectorSize, dictionary);
+        }
+
+        public static void Save(WordVec wordVec, string filePath)
+        {
+            var bf = new BinaryFormatter();
+            var fs = new FileStream(filePath, FileMode.Create);
+            bf.Serialize(fs, wordVec);
+            fs.Close();
+        }
+
+        public static WordVec Load(string filePath)
+        {
+            var bf = new BinaryFormatter();
+            var fs = new FileStream(filePath, FileMode.Open);
+            var wv = (WordVec)bf.Deserialize(fs);
+            fs.Close();
+            return wv;
         }
     }
 }

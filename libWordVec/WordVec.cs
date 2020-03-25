@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace wordVec
@@ -8,6 +9,16 @@ namespace wordVec
     {
         int vectorSize;
         Dictionary<string, Vec> dictionary;
+
+        public string[] GetWords()
+        {
+            var list = new string[dictionary.Count];
+            var index = 0;
+            foreach (var e in dictionary.Keys)
+                list[index++] = e;
+            Array.Sort(list);
+            return list;
+        }
 
         public WordVec(int vectorSize, Dictionary<string, Vec> dictionary)
         {
@@ -42,15 +53,15 @@ namespace wordVec
             return result;
         }
 
-        static void GetMinValueIndex(List<double> list, out int minValueIndex, out double minValue)
+        static void GetMinValueIndex(List<Tuple<string, Vec, double>> list, out int minValueIndex, out double minValue)
         {
             var r = 0;
             var v = double.MaxValue;
             for (int i = 1; i < list.Count; i++)
             {
-                if (list[i] < v)
+                if (list[i].Item3 < v)
                 {
-                    v = list[i];
+                    v = list[i].Item3;
                     r = i;
                 }
             }
@@ -64,10 +75,9 @@ namespace wordVec
         /// <param name="v"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<Tuple<string,  Vec>> GetNeighbors(Vec v, int count)
+        public List<Tuple<string,  Vec, double>> GetNeighbors(Vec v, int count)
         {
-            var wvList = new List<Tuple<string, Vec>>();
-            var d2List = new List<double>();
+            var wvList = new List<Tuple<string, Vec, double>>();
 
             var minD2 =  0.0;
             var minD2Index = 0;
@@ -76,17 +86,16 @@ namespace wordVec
                 var d2 = (v - e.Value).Length2();
                 if (wvList.Count < count)
                 {
-                    wvList.Add(new Tuple<string, Vec>(e.Key, e.Value));
-                    d2List.Add(d2);
+                    wvList.Add(new Tuple<string, Vec, double>(e.Key, e.Value, d2));
                     if (wvList.Count == count)
-                        GetMinValueIndex(d2List, out minD2Index, out minD2);
+                        GetMinValueIndex(wvList, out minD2Index, out minD2);
                 }
                 else
                 {
                     if (d2 < minD2)
                     {
-                        wvList[minD2Index] = new Tuple<string, Vec>(e.Key, e.Value);
-                        GetMinValueIndex(d2List, out minD2Index, out minD2);
+                        wvList[minD2Index] = new Tuple<string, Vec, double>(e.Key, e.Value, d2);
+                        GetMinValueIndex(wvList, out minD2Index, out minD2);
                     }
                 }
             }
